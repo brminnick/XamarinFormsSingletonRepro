@@ -5,26 +5,18 @@ namespace XamarinFormsSingletonRepro
 {
 public class App : Application
 {
-    public App() => MainPage = SingletonMainPage.Instance;
+    public App() => MainPage = SingletonTabbedPage.Instance;
 }
 
-class SingletonMainPage : ContentPage
+public class SingletonTabbedPage : TabbedPage
 {
-    readonly static Lazy<SingletonMainPage> _instanceHolder = new Lazy<SingletonMainPage>(() => new SingletonMainPage());
+    readonly static Lazy<SingletonTabbedPage> _instanceHolder = new Lazy<SingletonTabbedPage>(() => new SingletonTabbedPage());
 
-    SingletonMainPage()
+    SingletonTabbedPage()
     {
-        Content = new Label
-        {
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalOptions = LayoutOptions.Center,
-            HorizontalTextAlignment = TextAlignment.Center,
-            VerticalTextAlignment = TextAlignment.Center,
 
-            Text = "Main Page"
-        };
     }
 
-    public static SingletonMainPage Instance => _instanceHolder.Value;
+    public static SingletonTabbedPage Instance => _instanceHolder.Value;
 }
 }
